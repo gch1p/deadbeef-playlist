@@ -7,21 +7,21 @@ import os
 
 
 class Flag(Enum):
-    DDB_IS_SUBTRACK = 1 << 0  # file is not single-track, might have metainfo in external file
-    DDB_IS_READONLY = 1 << 1  # check this flag to block tag writing (e.g. in iso.wv)
-    DDB_HAS_EMBEDDED_CUESHEET = 1 << 2
+    IS_SUBTRACK = 1 << 0  # file is not single-track, might have metainfo in external file
+    IS_READONLY = 1 << 1  # check this flag to block tag writing (e.g. in iso.wv)
+    HAS_EMBEDDED_CUESHEET = 1 << 2
 
-    DDB_TAG_ID3V1 = 1 << 8
-    DDB_TAG_ID3V22 = 1 << 9
-    DDB_TAG_ID3V23 = 1 << 10
-    DDB_TAG_ID3V24 = 1 << 11
-    DDB_TAG_APEV2 = 1 << 12
-    DDB_TAG_VORBISCOMMENTS = 1 << 13
-    DDB_TAG_CUESHEET = 1 << 14
-    DDB_TAG_ICY = 1 << 15
-    DDB_TAG_ITUNES = 1 << 16
+    TAG_ID3V1 = 1 << 8
+    TAG_ID3V22 = 1 << 9
+    TAG_ID3V23 = 1 << 10
+    TAG_ID3V24 = 1 << 11
+    TAG_APEV2 = 1 << 12
+    TAG_VORBISCOMMENTS = 1 << 13
+    TAG_CUESHEET = 1 << 14
+    TAG_ICY = 1 << 15
+    TAG_ITUNES = 1 << 16
 
-    DDB_TAG_MASK = 0x000fff00
+    TAG_MASK = 0x000fff00
 
 
 class Track:
@@ -222,7 +222,7 @@ class Playlist:
                     # uint32_t
                     track.flags = unpack('I', f.read(4))[0]
                 elif track.startsample > 0 or track.endsample > 0 or track.num > 0:
-                    track.flags |= Flag.DDB_IS_SUBTRACK
+                    track.flags |= Flag.IS_SUBTRACK
 
                 # int16_t
                 meta_count = unpack('h', f.read(2))[0]
