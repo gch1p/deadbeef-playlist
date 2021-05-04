@@ -7,6 +7,13 @@ format, created by my absolute favorite desktop audio player
 I created it to be able to edit paths to audio files in the playlist, although
 it's possible to change any tracks properties.
 
+## Installation
+
+It's available in Pypi:
+```
+pip install dbpl
+```
+
 ## Example
 
 Let's imagine you have a large `.dbpl` playlist with hundreds of items, and you want
@@ -29,11 +36,6 @@ if __name__ == '__main__':
         uri = uri.replace('/data/music', '/Volumes/music')
         t.set_uri(uri)
     playlist.save(args.output)
-```
-
-Then use it:
-```
-python3 ./script.py --input old.dbpl --output new.dbpl
 ```
 
 ## License
